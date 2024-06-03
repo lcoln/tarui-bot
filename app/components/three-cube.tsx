@@ -29,8 +29,8 @@ function ThreeCube() {
       isDragging = true;
 
       const scale = getScale();
-      initialMouseX = event.screenX / scale;
-      initialMouseY = event.screenY / scale;
+      initialMouseX = event.screenX;
+      initialMouseY = event.screenY;
 
       const position = await appWindow.innerPosition();
       initialWindowX = position.x;
@@ -42,9 +42,10 @@ function ThreeCube() {
     document.addEventListener('mousemove', async (event) => {
       if (isDragging) {
         const scale = getScale();
+        console.log({ scale });
 
-        const currentMouseX = event.screenX / scale;
-        const currentMouseY = event.screenY / scale;
+        const currentMouseX = event.screenX;
+        const currentMouseY = event.screenY;
 
         const deltaX = currentMouseX - initialMouseX;
         const deltaY = currentMouseY - initialMouseY;
@@ -55,8 +56,8 @@ function ThreeCube() {
 
         requestAnimationFrameId = requestAnimationFrame(async () => {
           const newPosition = new LogicalPosition(
-            initialWindowX + deltaX,
-            initialWindowY + deltaY,
+            (initialWindowX + deltaX) / scale,
+            (initialWindowY + deltaY) / scale,
           );
           await appWindow.setPosition(newPosition);
         });
@@ -104,8 +105,8 @@ function ThreeCube() {
         } = await import('@tauri-apps/api/window');
 
         const webview = new WebviewWindow('theUniqueLabel', {
-          url: '/page.html',
-          resizable: true,
+          url: '/screen-shot/index.html',
+          resizable: false,
           transparent: true,
           decorations: false,
         });
