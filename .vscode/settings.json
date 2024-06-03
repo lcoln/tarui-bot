@@ -1,0 +1,23 @@
+{
+  "editor.formatOnSave": false,
+  "javascript.format.semicolons": "insert", // 自动插入分号
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": "never",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features" // ts格式化
+  },
+  "eslint.alwaysShowStatus": true,
+  "eslint.debug": true,
+  "eslint.format.enable": true,
+  "eslint.validate": ["javascript", "javascriptreact", "vue"],
+  "eslint.workingDirectories": [{
+    "mode": "auto"
+  }],
+  "stylelint.validate": ["css", "less", "postcss", "scss", "vue"],
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+}

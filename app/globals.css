@@ -31,3 +31,18 @@ body {
     text-wrap: balance;
   }
 }
+
+html, body, #__next {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+}
+#draggable-header {
+  width: 100%;
+  height: 40px;
+  cursor: move;
+  -webkit-app-region: drag; /* 对应属性用于让元素可拖拽整个窗口 */
+}
