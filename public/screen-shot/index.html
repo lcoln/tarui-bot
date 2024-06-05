@@ -8,4 +8,13 @@
 </head>
 <body>
 </body>
+<script>
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
+  const paramValue = getQueryParam('screenshot');
+  console.log(paramValue);  // 输出 `paramValue`
+</script>
 </html>
