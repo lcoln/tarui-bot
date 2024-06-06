@@ -26,27 +26,31 @@ const newWindow = async () => {
   const filepath = '33333';
   const webview = new WebviewWindow('theUniqueLabel', {
     url: `/screen-shot/index.html?screenshot=${filepath}`,
-    resizable: false,
-    transparent: true,
-    decorations: false,
+    // resizable: false,
+    // transparent: true,
+    // decorations: false,
     alwaysOnTop: true,
-    // fullscreen: true,
-    maximized: true,
+    // fullscreen: undefined,
+    // maximized: true,
+    // height: 3000,
+    // x: 0,
+    // y: -100
   });
   // 在新窗口创建后，将其设置为全屏
   webview.once('tauri://created', async () => {
     try {
       // 获取当前显示器尺寸
       const monitor = await currentMonitor();
+      console.log({monitor})
       const { size } = monitor;
 
       // 设置新窗口最大化
       await webview.setSize(new LogicalSize(size.width, size.height));
-      await webview.setPosition(new LogicalPosition(0, 0));
+      await webview.setPosition(new LogicalPosition(0, -100));
       // await webview.maximize();
 
       // 请求前置显示窗口
-      await webview.setFocus();
+      // await webview.setFocus();
     } catch (error) {
       console.error('Error setting window size or position:', error);
     }
