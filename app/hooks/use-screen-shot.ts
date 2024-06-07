@@ -26,15 +26,15 @@ const newWindow = async () => {
   const filepath = '33333';
   const webview = new WebviewWindow('theUniqueLabel', {
     url: `/screen-shot/index.html?screenshot=${filepath}`,
-    // resizable: false,
-    // transparent: true,
-    // decorations: false,
-    alwaysOnTop: true,
-    // fullscreen: undefined,
-    // maximized: true,
+    resizable: false,
+    transparent: true,
+    decorations: false,
+    // alwaysOnTop: true,
+    fullscreen: false,
+    maximized: true,
     // height: 3000,
-    // x: 0,
-    // y: -100
+    x: 0,
+    y: -400
   });
   // 在新窗口创建后，将其设置为全屏
   webview.once('tauri://created', async () => {
@@ -46,7 +46,8 @@ const newWindow = async () => {
 
       // 设置新窗口最大化
       await webview.setSize(new LogicalSize(size.width, size.height));
-      await webview.setPosition(new LogicalPosition(0, -100));
+      await webview.setAlwaysOnTop(true)
+      await webview.setPosition(new LogicalPosition(0, -1000));
       // await webview.maximize();
 
       // 请求前置显示窗口
